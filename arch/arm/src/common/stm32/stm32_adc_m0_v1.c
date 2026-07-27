@@ -1280,7 +1280,7 @@ static void adc_dmaconvcallback(DMA_HANDLE handle, uint8_t isr,
                                 void *arg)
 {
   struct adc_dev_s   *dev  = (struct adc_dev_s *)arg;
-  struct stm32_dev_s *priv = (struct stm32_dev_s *)dev->ad_priv;
+  struct stm32_dev_s *priv = (struct stm32_dev_s *)
   int i;
 
   /* Verify that the upper-half driver has bound its callback functions */
@@ -1433,8 +1433,7 @@ static void adc_sampletime_cfg(struct adc_dev_s *dev)
    * During sample cycles channel selection bits must remain unchanged.
    */
 #ifdef CONFIG_STM32_ADC_CHANGE_SAMPLETIME
-    struct stm32_dev_s *priv = (struct stm32_dev_s *)dev->ad_priv;
-  
+  struct stm32_dev_s *priv = (struct stm32_dev_s *)dev->ad_priv;  
   struct adc_sample_time_s time_samples = {
 #  ifdef STM32_ADC1_SMPR_SMP1
       .smp1    = STM32_ADC1_SMPR_SMP1,
